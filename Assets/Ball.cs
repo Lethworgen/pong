@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour
     public float speed = 30;
     void Start()
     {
-        //Initial Velocity
+        //Initial Velocity 
         GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
     }
 
@@ -19,7 +19,6 @@ public class Ball : MonoBehaviour
     //Resets the ball
     void resetBall()
     {
-        //GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         transform.position = Vector2.zero;
     }
 
@@ -49,11 +48,15 @@ public class Ball : MonoBehaviour
 
         if (col.gameObject.name == "WallLeft")
         {
+            float resetSpeed = 30;
+            GetComponent<Rigidbody2D>().velocity = Vector2.left * resetSpeed;
             resetBall();
         }
 
         if(col.gameObject.name == "WallRight")
         {
+            float resetSpeed = 30;
+            GetComponent<Rigidbody2D>().velocity = Vector2.right * resetSpeed;
             resetBall();
         }
 
