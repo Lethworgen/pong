@@ -16,6 +16,13 @@ public class Ball : MonoBehaviour
         return (ballPos.y - racketPos.y) / racketHeight;
     }
 
+    //Resets the ball
+    void resetBall()
+    {
+        //GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        transform.position = Vector2.zero;
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.name == "RacketLeft")
@@ -39,5 +46,17 @@ public class Ball : MonoBehaviour
             //Set Veclocity with dir * speed
             GetComponent<Rigidbody2D>().velocity = dir * speed;
         }
+
+        if (col.gameObject.name == "WallLeft")
+        {
+            resetBall();
+        }
+
+        if(col.gameObject.name == "WallRight")
+        {
+            resetBall();
+        }
+
+
     }
 }
